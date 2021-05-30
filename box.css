@@ -1,0 +1,124 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 75px;
+  background-color: black;
+  perspective: 20em;
+  perspective-origin: 50% calc(50% - 2em);
+}
+
+.scene {
+  position: relative;
+  transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  animation: boxAnimation 4s infinite linear;
+}
+.ball {
+  position: absolute;
+  background-color: lightblue;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  transform-style: preserve-3d;
+  animation: ballAnimation 1s infinite linear alternate,
+    boxAnimation 4s infinite linear reverse;
+  /* animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  
+  animation-direction: alternate; */
+  right: -0.5em;
+  background-image: radial-gradient(circle at top, lightblue, #000);
+}
+
+.ballShadow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  animation: ballShadow 1s infinite linear alternate;
+  background-image: radial-gradient(#0007, #0000 50%);
+}
+.box {
+  position: absolute;
+  width: 2em;
+  height: 2em;
+  top: 4em;
+  right: -1em;
+}
+
+.box .left,
+.box .right,
+.box .front,
+.box .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #0ff7;
+  box-shadow: 0 0 0.5em #000 inset;
+}
+
+.box .top {
+  position: absolute;
+  background-color: #0ff7;
+  width: 100%;
+  height: 100%;
+  transform: translateY(-1em) rotateX(90deg);
+  box-shadow: 0 0 0.5em #000 inset;
+}
+.box .bottom {
+  background-color: #0ff7;
+  width: 100%;
+  height: 100%;
+  transform: translateY(1em) rotateX(270deg);
+  box-shadow: 0 0 0.5em #000 inset;
+}
+
+.front {
+  transform: translateZ(1em);
+}
+.back {
+  transform: rotateY(180deg) translateZ(1em);
+}
+
+.left {
+  transform: rotateY(-90deg) translateZ(1em);
+}
+
+.right {
+  transform: rotateY(90deg) translateZ(1em);
+}
+.floor {
+  position: absolute;
+  background-image: radial-gradient(#0000, #000 85%),
+    repeating-conic-gradient(from 45deg, #111 0deg 90deg, #222 90deg 180deg);
+  transform: translate(-50%, 0%) rotateX(90deg);
+  background-size: 100%, 40px 40px;
+  height: 12em;
+  width: 12em;
+}
+@keyframes boxAnimation {
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+@keyframes ballAnimation {
+  0% {
+    top: 3em;
+    animation-timing-function: ease-out;
+  }
+  100% {
+    top: 0.5em;
+    animation-timing-function: ease-in;
+  }
+}
+
+@keyframes ballShadow {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(3);
+  }
+}
